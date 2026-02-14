@@ -1,0 +1,396 @@
+/* Estilos compartidos para las páginas especiales de cada amigo */
+:root {
+  --rosa-claro: #ffb6c1;
+  --rosa: #ff69b4;
+  --rosa-fuerte: #e91e8c;
+  --rojo: #c41e3a;
+  --rojo-oscuro: #8b1538;
+  --crema: #fff5f7;
+  --blanco: #ffffff;
+  --sombra: rgba(139, 21, 56, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.pagina-amigo {
+  font-family: 'Quicksand', 'Segoe UI', sans-serif;
+  background: linear-gradient(160deg, #fff5f7 0%, #ffe4ec 50%, #ffd4e0 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow-x: hidden;
+  animation: pagina-entrada 0.5s ease-out;
+}
+
+@keyframes pagina-entrada {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bg-hearts-pagina {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-hearts-pagina span {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+.bg-hearts-pagina span:nth-child(odd) { animation-delay: 0.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.card-especial {
+  position: relative;
+  z-index: 1;
+  background: var(--blanco);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px var(--sombra);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: aparecer 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-especial::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--rosa), var(--rojo));
+  border-radius: 28px 28px 0 0;
+}
+
+.corazon-grande {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.corazon-grande svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--rosa-fuerte);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%, 28% { transform: scale(1.1); }
+  21%, 35% { transform: scale(1); }
+}
+
+.card-especial h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  color: var(--rojo-oscuro);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.card-especial .mensaje {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(135deg, var(--rosa), var(--rojo));
+  color: var(--blanco);
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(233, 30, 140, 0.35);
+}
+
+.btn-volver:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.45);
+}
+
+/* Tema Drawing: paleta roja y morada (unificada con el corazón del index) */
+body.pagina-amigo.tema-drawing {
+  background: linear-gradient(160deg, #fce4ec 0%, #f8bbd9 25%, #e1bee7 60%, #d1c4e9 100%);
+}
+
+body.tema-drawing .bg-hearts-pagina span {
+  color: #7b1fa2;
+  opacity: 0.22;
+}
+
+body.tema-drawing .card-especial {
+  background: linear-gradient(180deg, #fce4ec 0%, #ffffff 40%);
+  box-shadow: 0 20px 50px rgba(123, 31, 162, 0.25), 0 0 0 1px rgba(198, 40, 40, 0.08);
+}
+
+body.tema-drawing .card-especial::before {
+  background: linear-gradient(90deg, #c62828, #7b1fa2);
+  height: 6px;
+}
+
+body.tema-drawing .corazon-grande.corazon-drawing svg {
+  fill: url(#gradiente-corazon-drawing);
+}
+
+body.tema-drawing .card-especial h1 {
+  color: #6a1b9a;
+}
+
+body.tema-drawing .card-especial .mensaje {
+  color: #424242;
+}
+
+body.tema-drawing .btn-volver {
+  background: linear-gradient(135deg, #c62828, #7b1fa2);
+  box-shadow: 0 4px 14px rgba(123, 31, 162, 0.4);
+}
+
+body.tema-drawing .btn-volver:hover {
+  box-shadow: 0 6px 20px rgba(123, 31, 162, 0.5);
+}
+
+/* Tema Roy Mar: paleta negra y morada (unificada con el corazón del index) */
+body.pagina-amigo.tema-roy-mar {
+  background: linear-gradient(160deg, #0d0d0d 0%, #1a1a2e 40%, #16213e 70%, #1a1a2e 100%);
+}
+
+body.tema-roy-mar .bg-hearts-pagina span {
+  color: #7b1fa2;
+  opacity: 0.25;
+}
+
+body.tema-roy-mar .card-especial {
+  background: linear-gradient(180deg, #2d2d44 0%, #1e1e2e 50%, #252535 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(123, 31, 162, 0.2);
+}
+
+body.tema-roy-mar .card-especial::before {
+  background: linear-gradient(90deg, #1a1a1a, #7b1fa2);
+  height: 6px;
+}
+
+body.tema-roy-mar .corazon-grande.corazon-roy-mar svg {
+  fill: url(#gradiente-corazon-roy-mar);
+}
+
+body.tema-roy-mar .card-especial h1 {
+  color: #ce93d8;
+}
+
+body.tema-roy-mar .card-especial .mensaje {
+  color: #e0e0e0;
+}
+
+body.tema-roy-mar .btn-volver {
+  background: linear-gradient(135deg, #1a1a1a, #7b1fa2);
+  box-shadow: 0 4px 14px rgba(123, 31, 162, 0.4);
+}
+
+body.tema-roy-mar .btn-volver:hover {
+  box-shadow: 0 6px 20px rgba(123, 31, 162, 0.55);
+}
+
+/* Tema Ame: paleta morado y azul (unificada con el corazón del index) */
+body.pagina-amigo.tema-ame {
+  background: linear-gradient(160deg, #f3e5f5 0%, #e8eaf6 40%, #e3f2fd 70%, #bbdefb 100%);
+}
+
+body.tema-ame .bg-hearts-pagina span {
+  color: #5e35b1;
+  opacity: 0.22;
+}
+
+body.tema-ame .card-especial {
+  background: linear-gradient(180deg, #f3e5f5 0%, #e8eaf6 30%, #ffffff 70%);
+  box-shadow: 0 20px 50px rgba(25, 118, 210, 0.2), 0 0 0 1px rgba(123, 31, 162, 0.1);
+}
+
+body.tema-ame .card-especial::before {
+  background: linear-gradient(90deg, #7b1fa2, #1976d2);
+  height: 6px;
+}
+
+body.tema-ame .corazon-grande.corazon-ame svg {
+  fill: url(#gradiente-corazon-ame);
+}
+
+body.tema-ame .card-especial h1 {
+  color: #5e35b1;
+}
+
+body.tema-ame .card-especial .mensaje {
+  color: #424242;
+}
+
+body.tema-ame .btn-volver {
+  background: linear-gradient(135deg, #7b1fa2, #1976d2);
+  box-shadow: 0 4px 14px rgba(25, 118, 210, 0.4);
+}
+
+body.tema-ame .btn-volver:hover {
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.5);
+}
+
+/* Tema Bray: paleta azul y verde (unificada con el corazón del index) */
+body.pagina-amigo.tema-bray {
+  background: linear-gradient(160deg, #e3f2fd 0%, #bbdefb 35%, #c8e6c9 70%, #a5d6a7 100%);
+}
+
+body.tema-bray .bg-hearts-pagina span {
+  color: #2e7d32;
+  opacity: 0.22;
+}
+
+body.tema-bray .card-especial {
+  background: linear-gradient(180deg, #e3f2fd 0%, #e8f5e9 35%, #ffffff 75%);
+  box-shadow: 0 20px 50px rgba(46, 125, 50, 0.2), 0 0 0 1px rgba(25, 118, 210, 0.1);
+}
+
+body.tema-bray .card-especial::before {
+  background: linear-gradient(90deg, #1976d2, #2e7d32);
+  height: 6px;
+}
+
+body.tema-bray .corazon-grande.corazon-bray svg {
+  fill: url(#gradiente-corazon-bray);
+}
+
+body.tema-bray .card-especial h1 {
+  color: #1565c0;
+}
+
+body.tema-bray .card-especial .mensaje {
+  color: #424242;
+}
+
+body.tema-bray .btn-volver {
+  background: linear-gradient(135deg, #1976d2, #2e7d32);
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.35);
+}
+
+body.tema-bray .btn-volver:hover {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.5);
+}
+
+/* Tema Sari: página especial, romántica y única */
+body.pagina-amigo.tema-sari {
+  background: linear-gradient(160deg, #2d1b2e 0%, #4a1942 30%, #6b2d5c 60%, #8b3a6b 100%);
+}
+
+body.tema-sari .bg-hearts-pagina span {
+  color: #ff69b4;
+  opacity: 0.3;
+  animation: float 5s ease-in-out infinite;
+}
+
+body.tema-sari .card-especial {
+  background: linear-gradient(180deg, #fff5f9 0%, #ffe4f0 30%, #ffd4e8 100%);
+  box-shadow: 0 24px 60px rgba(255, 105, 180, 0.35), 0 0 0 2px rgba(255, 182, 193, 0.4);
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
+  animation: aparecer-sari 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+@keyframes aparecer-sari {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body.tema-sari .card-especial::before {
+  background: linear-gradient(90deg, #ff69b4, #c71585, #ff1493);
+  height: 8px;
+  border-radius: 32px 32px 0 0;
+}
+
+body.tema-sari .corazon-grande.corazon-sari {
+  width: 100px;
+  height: 100px;
+  animation: heartbeat 0.9s ease-in-out infinite;
+}
+
+body.tema-sari .corazon-grande.corazon-sari svg {
+  filter: drop-shadow(0 4px 12px rgba(255, 20, 147, 0.4));
+}
+
+body.tema-sari .card-especial h1 {
+  color: #8b3a6b;
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+  margin-bottom: 1.25rem;
+}
+
+body.tema-sari .card-especial .mensaje {
+  color: #4a1942;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.75;
+}
+
+body.tema-sari .card-especial .subtitulo-especial {
+  font-size: 0.9rem;
+  color: #8b3a6b;
+  opacity: 0.9;
+  margin-top: 1rem;
+}
+
+body.tema-sari .btn-volver {
+  background: linear-gradient(135deg, #ff69b4, #c71585);
+  box-shadow: 0 6px 20px rgba(199, 21, 133, 0.45);
+  margin-top: 0.5rem;
+}
+
+body.tema-sari .btn-volver:hover {
+  box-shadow: 0 8px 28px rgba(199, 21, 133, 0.6);
+}
+
+@media (max-width: 400px) {
+  .card-especial {
+    padding: 2rem 1.5rem;
+  }
+}
